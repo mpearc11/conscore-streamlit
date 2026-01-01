@@ -39,34 +39,22 @@ df1 = ''
 df2 = ''
 df_exploded = ''
 
-##from google to convert msa to df
-def fasta_to_dataframe(fasta_file):
-    records = []
-    for record in AlignIO.read(fasta_file, "fasta"):
-        records.append({
-            'ID': record.id,
-            'Sequence': str(record.seq),
-        })
-        st.write(record.id)
-    df = pd.DataFrame(records)
-    return df
-
-if st.button('make msa_df'):
-    msa_df = fasta_to_dataframe(msa_file)
-    st.write(msa_df)
 
 alignment = AlignIO.read(StringIO(temp), "clustal")
-#st.write(alignment)
-#for record in alignment:
-    #st.write(record.id)
+st.write(alignment)
+for record in alignment:
+    st.write(record.id)
+
+if st.button('make msa df'):
+    msa_df = pd.DataFrame(records)
+    st.write(msa_df)
 
 #convert clustal alignment to individual sequence strings
-
-for idx,i in enumerate(alignment):
-    if 'P22259' in str(i.id):
-        seq1 = str(alignment[idx].seq) #ps
-    else:
-        seq2 = str(alignment[idx].seq) #target
+#for idx,i in enumerate(alignment):
+ #   if 'P22259' in str(i.id):
+  #      seq1 = str(alignment[idx].seq) #ps
+   # else:
+    #    seq2 = str(alignment[idx].seq) #target
 
 #st.write(seq1)
 #st.write(seq2)
