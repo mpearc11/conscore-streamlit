@@ -13,26 +13,26 @@ import os
 import numpy as np
 from pandas import DataFrame
 
-st.title('EvoScore Calculation')
+st.title('ConScore Calculation')
 
-st.header('Submit Sequences for PSA')
+st.header('Submit MSA')
 
 #can insert code here later that will allow file upload & do the alignment internally; will probably not do this bc i think the psa is 'bad' (doesn't match clustal omega)
     
 ##below is core of code for clustal and consurf uploads & alignment in df
 
-psa_file = st.file_uploader("",type='clustal_num')
+psa_file = st.file_uploader("",type='fasta')
 if psa_file is not None:
-    st.success("PSA file uploaded")
+    st.success("MSA file uploaded")
 else:
-    st.info("please upload your clustal .clustal file")
+    st.info("please upload your .fasta MSA file")
 
 
-consurf_file = st.file_uploader('',type='csv')
-if consurf_file is not None:
-    st.success('consurf file uploaded')
-else:
-    st.info('please upload the consurf excel file')
+#consurf_file = st.file_uploader('',type='csv')
+#if consurf_file is not None:
+#    st.success('consurf file uploaded')
+#else:
+#    st.info('please upload the consurf excel file')
 
 
 #temp = psa_file.read() ##adds 'b in front of file & other character issues (adds /n etc)
@@ -51,7 +51,7 @@ if st.button('read in clustal alignment file'):
     ps_line = ""
     target_line = ""
     temp_split = temp.splitlines()
-    # Process the captured Clustal output text line by line
+    #put msa info into variables
     for line in temp_split[1:]:
         # The conservation line is identifiable by its spacing
         if 'P22259' in line:
