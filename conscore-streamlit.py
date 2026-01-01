@@ -46,7 +46,7 @@ for record in alignment:
     st.write(record.id)
 
 if st.button('make msa df'):
-    msa_df = pd.DataFrame(records)
+    msa_df = pd.DataFrame(alignment)
     st.write(msa_df)
 
 #convert clustal alignment to individual sequence strings
