@@ -41,41 +41,21 @@ df_exploded = ''
 
 
 alignment = AlignIO.read(StringIO(temp), "fasta")
-st.write(alignment)
-for record in alignment:
-    st.write(record.id)
+#st.write(alignment)
+#for record in alignment:
+    #st.write(record.id)
 
 if st.button('make msa df'):
     msa_df = pd.DataFrame(alignment)
     st.write(msa_df)
 
-#convert clustal alignment to individual sequence strings
-#for idx,i in enumerate(alignment):
- #   if 'P22259' in str(i.id):
-  #      seq1 = str(alignment[idx].seq) #ps
-   # else:
-    #    seq2 = str(alignment[idx].seq) #target
-
-#st.write(seq1)
-#st.write(seq2)
-
-#convert strings to pandas dataframe
-
-#data = {'Target Seq': [target_line],
- #           'Project Standard Seq': [ps_line]}
-data = {'Target Seq': [seq2],
-            'Project Standard Seq': [seq1]}
-df = pd.DataFrame(data)
-#st.write(df)
-df1 = df['Target Seq'].str.split('').explode().reset_index(drop=True)
-#st.write(df1)
-df2 = df['Project Standard Seq'].str.split('').explode().reset_index(drop=True)
-#st.write(df2)
-df_exploded = pd.concat([df1, df2], axis=1)
-#st.write(df_exploded)
-#df_exploded['color'] = 0
-df_exploded = df_exploded.iloc[1:].reset_index(drop=True) #moving this to after the conservation symbols are added
-#st.write(df_exploded)
+    if st.button('make freq df'):
+        #make frequency df
+        freq_df = ''
+        freq_df.columns = ['A','C','D','E','F','G','H','I','K','L','M','N','P','Q','R','S','T','V','W','Y']
+        for idx,i in enumerate(msa_df['0']):
+            st.write(idx)
+            st.write(i)
     
 
 @st.fragment()
