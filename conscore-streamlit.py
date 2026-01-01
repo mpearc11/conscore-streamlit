@@ -45,17 +45,16 @@ alignment = AlignIO.read(StringIO(temp), "fasta")
 #for record in alignment:
     #st.write(record.id)
 
-if st.button('make msa df'):
+if st.button('make msa df & freq df'):
     msa_df = pd.DataFrame(alignment)
     st.write(msa_df)
 
-    if st.button('make freq df'):
-        #make frequency df
-        freq_df = ''
-        freq_df.columns = ['A','C','D','E','F','G','H','I','K','L','M','N','P','Q','R','S','T','V','W','Y']
-        for idx,i in enumerate(msa_df['0']):
-            st.write(idx)
-            st.write(i)
+    #make frequency df
+    freq_df = ''
+    freq_df.columns = ['A','C','D','E','F','G','H','I','K','L','M','N','P','Q','R','S','T','V','W','Y']
+    for idx,i in enumerate(msa_df['0']):
+        st.write(idx)
+        st.write(i)
     
 
 @st.fragment()
