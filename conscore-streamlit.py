@@ -40,7 +40,7 @@ df2 = ''
 df_exploded = ''
 
 
-alignment = AlignIO.read(StringIO(temp), "clustal")
+alignment = AlignIO.read(StringIO(temp), "fasta")
 st.write(alignment)
 for record in alignment:
     st.write(record.id)
