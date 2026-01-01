@@ -42,12 +42,12 @@ df_exploded = ''
 ##from google to convert msa to df
 def fasta_to_dataframe(fasta_file):
     records = []
-    for record in SeqIO.parse(fasta_file, "fasta"):
+    for record in AlignIO.read(fasta_file, "fasta"):
         records.append({
             'ID': record.id,
             'Sequence': str(record.seq),
-            'Description': record.description
         })
+        st.write(record.id)
     df = pd.DataFrame(records)
     return df
 
