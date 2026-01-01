@@ -51,8 +51,9 @@ if st.button('make msa df & freq df'):
 
     #make frequency df
     freq_df = pd.DataFrame(columns = ['A','C','D','E','F','G','H','I','K','L','M','N','P','Q','R','S','T','V','W','Y'])
-    for i in msa_df.iloc[:,i]:
+    for i in len(msa_df.columns):
         st.write(i)
+        st.write(msa_df.iloc[0,i])
     
 
 @st.fragment()
