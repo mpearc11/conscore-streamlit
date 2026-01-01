@@ -51,8 +51,9 @@ def fasta_to_dataframe(fasta_file):
     df = pd.DataFrame(records)
     return df
 
-msa_df = fasta_to_dataframe(msa_file)
-st.write(msa_df)
+if st.button('make msa_df'):
+    msa_df = fasta_to_dataframe(msa_file)
+    st.write(msa_df)
 
 alignment = AlignIO.read(StringIO(temp), "clustal")
 #st.write(alignment)
