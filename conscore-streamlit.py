@@ -62,7 +62,7 @@ if st.button('make msa df & freq df'):
     st.write(freq_df)
 
     #make table with consensus scores
-    score_df = pd.DataFrame(index = ['0'], columns = msa_df.columns)
+    score_df = pd.DataFrame(index = ['consensus aa','score'], columns = msa_df.columns)
     st.write(score_df)
     for i in range(len(freq_df.columns)):
         st.write(msa_df.iloc[:,i].mode())
