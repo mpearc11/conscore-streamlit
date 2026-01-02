@@ -55,7 +55,7 @@ if st.button('make msa df & freq df'):
     for i in range(len(msa_df.columns)):
         #st.write(i)
         #st.write(msa_df.iloc[0,i])
-        freqaa = (msa_df.iloc[:,0] == 'A').sum()
+        freqaa = (msa_df.iloc[:,0] == 'M').sum()
         st.write(freqaa)
         freq_df.iloc[0,0] = freqaa
         st.write(freq_df)
