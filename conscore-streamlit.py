@@ -46,7 +46,7 @@ alignment = AlignIO.read(StringIO(temp), "fasta")
     #st.write(record.id)
 
 if st.button('make msa df & freq df'):
-    msa_df = pd.DataFrame(alignment)
+    msa_df = pd.DataFrame(alignment, index = alignment.record.id)
     st.write(msa_df)
 
     #make frequency df
