@@ -52,16 +52,21 @@ if st.button('make msa df & freq df'):
     #make frequency df
     aa = ['A','C','D','E','F','G','H','I','K','L','M','N','P','Q','R','S','T','V','W','Y']
     freq_df = pd.DataFrame(index = aa, columns = msa_df.columns)
-    st.write(freq_df)
     for i in range(len(msa_df.columns)):
-        #st.write(i)
-        #st.write(msa_df.iloc[0,i])
         for a in range(len(aa)):
-            #st.write(msa_df.iloc[:,0])
             freqaa = (msa_df.iloc[:,i] == aa[a]).sum()
             #st.write(freqaa)
             freq_df.iloc[a,i] = freqaa
     st.write(freq_df)
+
+    #make table with consensus scores
+    score_df = pd.DataFrame(columns = msa_df.columns)
+    for i in range(len(freq_df.columns)):
+        total = freq_df.iloc[:,i].sum()
+        top_aa = freq_df.iloc[:,i].max()
+        percent = top_aa/total
+        score_df.iloc[0,i] = percent
+    st.write(score_df)
         
     
 
