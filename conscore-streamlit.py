@@ -50,12 +50,14 @@ if st.button('make msa df & freq df'):
     st.write(msa_df)
 
     #make frequency df
-    freq_df = pd.DataFrame(index = ['A','C','D','E','F','G','H','I','K','L','M','N','P','Q','R','S','T','V','W','Y'], columns = msa_df.columns)
+    aa = ['A','C','D','E','F','G','H','I','K','L','M','N','P','Q','R','S','T','V','W','Y']
+    freq_df = pd.DataFrame(index = aa, columns = msa_df.columns)
     st.write(freq_df)
     for i in range(len(msa_df.columns)):
         #st.write(i)
         #st.write(msa_df.iloc[0,i])
-        st.write(msa_df.iloc[:,0]
+        #for a in range(len(aa)):
+        st.write(msa_df.iloc[:,0])
         freqaa = (msa_df.iloc[:,0] == 'M').sum()
         st.write(freqaa)
         #freq_df.iloc[0,0] = freqaa
