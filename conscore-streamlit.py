@@ -45,7 +45,7 @@ alignment = AlignIO.read(StringIO(temp), "fasta")
 targets = []
 for record in alignment:
     st.write(record.id)
-    targets += record.id
+    targets = record.id
     st.write(targets)
 
 if st.button('make msa df & freq df'):
