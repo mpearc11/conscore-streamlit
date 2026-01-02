@@ -77,9 +77,9 @@ if st.button('make msa df & freq df'):
     def frag():
         target = st.text_input('enter your target ID', 'ex: P22259')
         scores = []
-        for i in range(len(score_df)):
-            st.write(msa_df.iloc[msa_df.index.get_loc(target),i])
-            st.write(score_df.iloc[0,i])
+        for i in range(len(score_df.columns)):
+            #st.write(msa_df.iloc[msa_df.index.get_loc(target),i])
+            #st.write(score_df.iloc[0,i])
             if msa_df.iloc[msa_df.index.get_loc(target),i] == score_df.iloc[0,i]:
                 scores.append(score_df.iloc[1,i])
         conscore = sum(scores)
