@@ -46,7 +46,7 @@ targets = []
 for record in alignment:
     st.write(record.id)
     targets += record.id
-st.write(targets)
+    st.write(targets)
 
 if st.button('make msa df & freq df'):
     msa_df = pd.DataFrame(alignment, index = targets)
