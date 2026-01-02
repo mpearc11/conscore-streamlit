@@ -44,9 +44,8 @@ alignment = AlignIO.read(StringIO(temp), "fasta")
 #st.write(alignment)
 targets = []
 for record in alignment:
-    st.write(record.id)
-    targets = record.id
-    st.write(targets)
+    targets.append(record.id)
+st.write(targets)
 
 if st.button('make msa df & freq df'):
     msa_df = pd.DataFrame(alignment, index = targets)
