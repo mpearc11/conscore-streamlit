@@ -60,7 +60,8 @@ if st.button('make msa df & freq df'):
     st.write(freq_df)
 
     #make table with consensus scores
-    score_df = pd.DataFrame(columns = msa_df.columns)
+    score_df = pd.DataFrame(index = ['0'], columns = msa_df.columns)
+    st.write(score_df)
     for i in range(len(freq_df.columns)):
         total = freq_df.iloc[:,i].sum()
         top_aa = freq_df.iloc[:,i].max()
