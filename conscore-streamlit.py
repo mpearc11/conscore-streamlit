@@ -65,8 +65,8 @@ if st.button('make msa df & freq df'):
     score_df = pd.DataFrame(index = ['consensus aa','score'], columns = msa_df.columns)
     st.write(score_df)
     for i in range(len(freq_df.columns)):
-        st.write(str(msa_df.iloc[:,i].mode())[2])
-        score_df.iloc[0,i] = str(msa_df.iloc[:,i].mode())[2]
+        st.write(str(msa_df.iloc[:,i].mode())[1])
+        score_df.iloc[0,i] = str(msa_df.iloc[:,i].mode())[1]
         total = freq_df.iloc[:,i].sum()
         top_aa = freq_df.iloc[:,i].max()
         percent = top_aa/total
