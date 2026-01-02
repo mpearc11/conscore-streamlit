@@ -65,12 +65,16 @@ if st.button('make msa df & freq df'):
     score_df = pd.DataFrame(index = ['0'], columns = msa_df.columns)
     st.write(score_df)
     for i in range(len(freq_df.columns)):
+        st.write(msa_df.iloc[:,i].mode())
+        score_df.iloc[0,i] = msa_df.iloc[:,i].mode()
         total = freq_df.iloc[:,i].sum()
         top_aa = freq_df.iloc[:,i].max()
         percent = top_aa/total
-        score_df.iloc[0,i] = percent
+        score_df.iloc[1,i] = percent
     st.write(score_df)
         
+    #call target and determine it's score
+    target = st.text_input('enter your target ID', 'ex: P22259')
     
 
 @st.fragment()
