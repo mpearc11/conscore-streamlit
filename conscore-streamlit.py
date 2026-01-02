@@ -81,80 +81,10 @@ if st.button('make msa df & freq df'):
             if msa_df.iloc[msa_df.index.get_loc(target),i] == score_df.iloc[0,i]:
                 scores.append(score_df.iloc[1,i])
         conscore = sum(scores)
+        st.write(scores)
         st.write(conscore)
     frag()
         
-
-@st.fragment()
-def frag():
-    if st.button('create consurf dataframe & align with clustal dataframe'):
-        consurf_df = pd.read_csv(consurf_file)
-        #st.write(consurf_df)
-        consurf_df = consurf_df[['SEQ','COLOR']]
-        consurf_df = consurf_df.iloc[1:].reset_index(drop=True)
-        #st.write(consurf_df)
-        
-        #combine dataframes; can concat OR just create the new COLOR one based on presence/absence of letter in each row
-        
-        #df_combined = pd.concat([df_exploded, consurf_df], axis=1)
-        #st.write(df_combined)
-                    
-
-        for idx, aa in enumerate(df_exploded['Project Standard Seq']):
-            #st.write(aa)
-            if aa == '-':
-                #st.write(idx)
-                gap = idx
-                #st.write(gap)
-                #st.write(gap - 0.5)
-                #consurf_df.loc[gap] = ''
-                line = DataFrame({"SEQ": '', "COLOR": 0}, index=[gap -0.5])
-                consurf_df = pd.concat([consurf_df, line])
-                consurf_df = consurf_df.sort_index().reset_index(drop=True)
-        #st.write(consurf_df)
-        df_combined = pd.concat([df_exploded, consurf_df], axis=1)
-        df_combined = df_combined.iloc[:-1]
-        #st.write(df_combined)
-
-        #create new column (evoscore) and fill cells
-        df_combined['EvoScore'] = ''
-        #st.write(df_combined)
-        #st.write(df_combined.dtypes)
-        for idx,i in enumerate(df_combined['COLOR']):
-            if i < 4:
-                df_combined.iloc[idx,5] = 0
-            if i >= 4:
-                df_combined.iloc[idx,5] = i
-            if df_combined.iloc[idx,0] == df_combined.iloc[idx,1]:
-                df_combined.iloc[idx,5] = 0
-        st.write(df_combined)
-        st.write(df_combined.dtypes)
-        df_combined['EvoScore'] = df_combined['EvoScore'].astype(float)
-        #st.write(df_combined.dtypes)
-        evoscore = df_combined['EvoScore'].sum()
-        st.write('EvoScore = ' + str(evoscore))
-        
-        df_combined['Weighted EvoScore'] = ''
-        for idx, i in enumerate(df_combined['COLOR']):
-            if i < 4:
-                df_combined.iloc[idx,6] = 0
-            if i >= 4:
-                if df_combined.iloc[idx,2] == '*':
-                    df_combined.iloc[idx,6] = 0
-                if df_combined.iloc[idx,2] == ':':
-                    df_combined.iloc[idx,6] = i*0.5
-                if df_combined.iloc[idx,2] == '.':
-                    df_combined.iloc[idx,6] = i*0.75
-                if df_combined.iloc[idx,2] == ' ':
-                    df_combined.iloc[idx,6] = i
-        st.write(df_combined)
-        st.write(df_combined[['Project Standard Seq', 'Target Seq', 'EvoScore', 'Weighted EvoScore']])
-        weighted_evoscore = df_combined['Weighted EvoScore'].sum()
-        st.write('Weighted EvoScore = ' + str(weighted_evoscore))
-
-            
-        
-frag()
 
 
 #@st.fragment()
