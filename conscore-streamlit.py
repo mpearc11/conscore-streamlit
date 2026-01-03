@@ -77,10 +77,14 @@ if st.button('make msa df & freq df'):
     def frag():
         target = st.text_input('enter your target ID', 'ex: P22259')
         scores = []
+        row = msa_df.loc[msa_df.index.str.contains(target)]
+        st.write(row)
+        st.write(row.index)
+        st.write(str(row.index))
         for i in range(len(score_df.columns)):
             #st.write(msa_df.iloc[msa_df.index.get_loc(target),i])
             #st.write(score_df.iloc[0,i])
-            if msa_df.iloc[msa_df.index.get_loc(target),i] == score_df.iloc[0,i]:
+            if msa_df.iloc[msa_df.index.get_loc(row.index),i] == score_df.iloc[0,i]: ##used to just be target variable to find, but the large MSA doesn't only have the ID in the index so have to do a search for partial to find the right index
                 scores.append(score_df.iloc[1,i])
         conscore = sum(scores)
         st.write(scores)
