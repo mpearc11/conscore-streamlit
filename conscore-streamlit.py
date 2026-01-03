@@ -80,7 +80,7 @@ if st.button('make msa df & freq df'):
         row = msa_df.loc[msa_df.index.str.contains(target)]
         st.write(row)
         st.write(row.index)
-        st.write(str(row.index))
+        st.text(str(row.index))
         for i in range(len(score_df.columns)):
             #st.write(msa_df.iloc[msa_df.index.get_loc(target),i])
             #st.write(score_df.iloc[0,i])
