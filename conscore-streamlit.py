@@ -81,6 +81,8 @@ if st.button('make msa df & freq df'):
         st.write(row)
         st.write(row.index)
         st.write(row.index.astype(str))
+        st.write(msa_df.index.astype(str)[0])
+        st.write(row.index.astype(str)[0])
 
         st.text(str(row.index))
         for i in range(len(score_df.columns)):
