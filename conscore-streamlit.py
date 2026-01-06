@@ -63,7 +63,7 @@ if st.button('make msa df & freq df'):
 
     #make table with consensus scores
     score_df = pd.DataFrame(index = ['consensus aa','score'], columns = msa_df.columns)
-    st.write(score_df)
+    #st.write(score_df)
     for i in range(len(freq_df.columns)):
         score_df.iloc[0,i] = str(msa_df.iloc[:,i].mode())[5]
         total = freq_df.iloc[:,i].sum()
@@ -86,7 +86,7 @@ if st.button('make msa df & freq df'):
                 scores.append(score_df.iloc[1,i])
         conscore = sum(scores)
         #st.write(scores)
-        st.write('ConScore = ', conscore)
+        st.write('ConScore = ', str(conscore))
     frag()
         
 
