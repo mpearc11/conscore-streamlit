@@ -30,7 +30,7 @@ else:
 try:
     temp = msa_file.getvalue().decode("utf-8") ##decodes characters correctly but still has too long file name issue
 except AttributeError:
-    pass
+    temp = 'AAAAAAAAAAAAAAAA'
 #st.text(temp)
 
 #declaring variables outside of button if statement so i can access them after the button step
