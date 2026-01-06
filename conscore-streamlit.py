@@ -30,7 +30,7 @@ else:
 try:
     temp = msa_file.getvalue().decode("utf-8") ##decodes characters correctly but still has too long file name issue
 except AttributeError:
-    temp = 'AAAAAAAAAAAAAAAA'
+    pass
 #st.text(temp)
 
 #declaring variables outside of button if statement so i can access them after the button step
@@ -39,13 +39,13 @@ df1 = ''
 df2 = ''
 df_exploded = ''
 
-
-alignment = AlignIO.read(StringIO(temp), "fasta")
-#st.write(alignment)
-targets = []
-for record in alignment:
-    targets.append(record.id)
-#st.write(targets)
+try:
+    alignment = AlignIO.read(StringIO(temp), "fasta")
+    targets = []
+    for record in alignment:
+        targets.append(record.id)
+except NameError:
+    pass
 
 if st.button('make msa df & freq df'):
     msa_df = pd.DataFrame(alignment, index = targets)
