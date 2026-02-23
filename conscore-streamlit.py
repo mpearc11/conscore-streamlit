@@ -21,7 +21,7 @@ st.header('Submit MSA')
     
 ##below is core of code for clustal and consurf uploads & alignment in df
 
-msa_file = st.file_uploader("",type=['fa','fasta','clustal_num'])
+msa_file = st.file_uploader("",type=['fa','fasta','aln-fasta','clustal_num'])
 if msa_file is not None:
     st.success("MSA file uploaded")
 else:
