@@ -13,7 +13,7 @@ import os
 import numpy as np
 from pandas import DataFrame
 
-st.title('ConScore Calculation')
+st.title('EvoScore Calculation')
 
 st.header('Submit MSA')
 
@@ -87,7 +87,7 @@ if st.button('make msa df & freq df'):
                     scores.append(score_df.iloc[1,i])
             conscore = sum(scores)
             #st.write(scores)
-            st.write('ConScore = ', str(conscore))
+            st.write('EvoScore = ', str(round(conscore,1)))
         except IndexError:
             pass
     frag()
